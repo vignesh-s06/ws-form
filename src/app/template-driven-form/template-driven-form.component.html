@@ -1,0 +1,340 @@
+<div class="container card mt-5">
+    <h1 class="text-center" style="color: yellow;">Template form</h1>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+      <div class="form-group">
+        <label>Title:</label>
+        <span class="text text-danger star-size">*</span>
+        <select
+          name="title"
+          class="form-control select-button"
+          #title="ngModel"
+          ngModel
+          required
+          aria-placeholder="Title"
+        >
+          <option value=""></option>
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mrs</option>
+          <option value="Miss">Miss</option>
+          <option value="Ms">Ms</option>
+        </select>
+        <span class="text text-danger" *ngIf="title.touched && title.invalid"
+          >*Title</span
+        >
+        <span class="text success" *ngIf="title.valid"
+          ><i class="fa fa-check text-success"></i
+        ></span>
+      </div>
+  
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="fn">First name:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              required
+              minlength="5"
+              ngModel
+              #fn="ngModel"
+              class="form-control"
+              placeholder="First name"
+              name="fn"
+            />
+            <div class="text text-danger" *ngIf="fn.errors?.['minlength']">
+              must be more than 5 charac
+            </div>
+            <div class="text text-danger" *ngIf="fn.touched && fn.invalid">
+              <div class="text text-danger" *ngIf="fn.errors?.['required']">
+                Firstname is required
+              </div>
+              <!-- <div class="text text-danger" *ngIf="fn.errors?.['minlength']">
+                must be more than 5 charac
+              </div> -->
+            </div>
+            <div class="text text-danger" *ngIf="fn.valid">
+              <div class="text text-success" *ngIf="fn.valid">
+                <i class="fa fa-check text-success"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="fn">Last name:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              minlength="5"
+              required
+              ngModel
+              #ln="ngModel"
+              class="form-control"
+              placeholder="Last name"
+              name="ln"
+            />
+            <div class="text text-danger" *ngIf="ln.touched && ln.invalid">
+              <div class="text text-danger" *ngIf="ln.errors?.['required']">
+                lastname is required
+              </div>
+              <div class="text text-danger" *ngIf="ln.errors?.['minlength']">
+                must be more than 5 charac
+              </div>
+            </div>
+            <div class="text text-danger" *ngIf="ln.valid">
+              <div class="text text-success" *ngIf="ln.valid">
+                <i class="fa fa-check text-success"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <span class="text text-danger star-size">*</span>
+        <span class="text text-success star-size" *ngIf="email.valid">*</span>
+        <input
+          type="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+          ngModel
+          #email="ngModel"
+          class="form-control"
+          placeholder="Enter email"
+          name="email"
+        />
+        <span class="text text-danger" *ngIf="email.touched && email.invalid">
+          Email id Requried
+        </span>
+        <span class="text text-succes" *ngIf="email.valid"
+          ><i class="fa fa-check text-success"></i
+        ></span>
+      </div>
+  
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <span class="text text-danger star-size">*</span>
+        <input
+          type="password"
+          ngModel
+          #pswd="ngModel"
+          required
+          class="form-control"
+          required
+          minlength="6"
+          placeholder="Enter password"
+          name="pswd"
+        />
+        <div class="text text-danger" *ngIf="pswd.touched && pswd.invalid">
+          <div class="text text-danger" *ngIf="pswd.errors?.['required']">
+            Password is required
+          </div>
+          <div class="text text-danger" *ngIf="pswd.errors?.['minlength']">
+            password must be at least 8 characters
+          </div>
+        </div>
+        <div class="text text-danger" *ngIf="pswd.valid">
+          <div class="text text-success" *ngIf="pswd.valid">
+            <i class="fa fa-check text-success"></i>
+          </div>
+        </div>
+      </div>
+  
+      <div class="contact d-flex">
+        <div class="form-group w-25">
+          <label>C.Code</label>
+          <span class="text text-danger star-size">*</span>
+          <select
+            name="code"
+            class="form-control select-button"
+            #code="ngModel"
+            ngModel
+            required
+            aria-placeholder="C.Code"
+          >
+            <option value=""></option>
+            <option value="+91">India</option>
+          </select>
+          <span class="text text-danger" *ngIf="code.touched && code.invalid"
+            >*Title</span
+          >
+          <span class="text success" *ngIf="code.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+  
+        <div class="form-group">
+          <label for="contact">Contact no:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            minlength="10"
+            maxlength="10"
+            type="text"
+            required
+            ngModel
+            #contact="ngModel"
+            class="form-control"
+            placeholder="Contact no"
+            name="contact"
+          />
+          <div class="text text-danger" *ngIf="contact.touched && contact.invalid">
+            <div class="text text-danger" *ngIf="contact.errors?.['required']">
+              contact is required
+            </div>
+            <div class="text text-danger" *ngIf="contact.errors?.['minlength']">
+               must be a 10 digit
+            </div>
+          </div>
+          <div class="text text-danger" *ngIf="contact.valid">
+            <div class="text text-success" *ngIf="contact.valid">
+              <i class="fa fa-check text-success"></i>
+            </div>
+            </div>
+        </div>
+      </div>
+  
+      <div class="city row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="city">City:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              required
+              ngModel
+              #city="ngModel"
+              class="form-control"
+              placeholder="City"
+              name="city"
+            />
+            <span class="text text-danger" *ngIf="city.touched && city.invalid">
+              City name required
+            </span>
+            <span class="text text-succes" *ngIf="city.valid"
+              ><i class="fa fa-check text-success"></i
+            ></span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="state">State:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              required
+              ngModel
+              #state="ngModel"
+              class="form-control"
+              placeholder="State"
+              name="state"
+            />
+            <span class="text text-danger" *ngIf="state.touched && state.invalid">
+              State name required
+            </span>
+            <span class="text text-succes" *ngIf="state.valid"
+              ><i class="fa fa-check text-success"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <span class="text text-danger star-size">*</span>
+        <input
+          type="text"
+          required
+          ngModel
+          #country="ngModel"
+          class="form-control"
+          placeholder="Country"
+          name="country"
+        />
+        <span class="text text-danger" *ngIf="country.touched && country.invalid">
+          Country name required
+        </span>
+        <span class="text text-succes" *ngIf="country.valid"
+          ><i class="fa fa-check text-success"></i
+        ></span>
+      </div>
+  
+      <div class="form-group">
+        <label for="postalcode">Postal code:</label>
+        <span class="text text-danger star-size">*</span>
+        <input
+          type="text"
+          required
+          minlength="6"
+          maxlength="6"
+          ngModel
+          #postalcode="ngModel"
+          class="form-control"
+          placeholder="Postal code"
+          name="postalcode"
+        />
+        <div class="text text-danger" *ngIf="postalcode.touched && postalcode.invalid">
+          <div class="text text-danger" *ngIf="postalcode.errors?.['required']">
+            PostalCode is required
+          </div>
+          <div class="text text-danger" *ngIf="postalcode.errors?.['minlength']">
+             must be a 6 digit
+          </div>
+        </div>
+        <div class="text text-danger" *ngIf="postalcode.valid">
+          <div class="text text-success" *ngIf="postalcode.valid">
+            <i class="fa fa-check text-success"></i>
+          </div>
+          </div>
+      </div>
+  
+      <div class="form-group mt-3">
+        <div class="form-check">
+          <input class="form-check-input form-conrol " type="checkbox" ngModel #check="ngModel" id="invalidCheck" required name="check">
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+          <div class="text-danger" *ngIf="check.touched && check.invalid">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+  
+  
+  
+  
+  
+  
+      <!-- Button trigger modal -->
+  <button type="submit" [disabled]="!userForm.valid" class="btn btn-success mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Sign Up
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Infoooo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>Sign Up successful !!! <br>
+            Data stored in localStorage
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+      <!-- <button
+        type="submit"
+        [disabled]="!userForm.valid"
+        class="btn btn-success mt-5 mb-5"
+      >
+        Sign-Up
+      </button> -->
+    </form>
+  </div>

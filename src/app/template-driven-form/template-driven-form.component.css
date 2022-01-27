@@ -1,0 +1,31 @@
+.card{
+    width: 500px;
+}
+
+input.ng-touched{
+    border-left: 5px solid red;
+}
+
+input.ng-valid{
+    border-left: 5px solid green;
+}
+.star-size{
+    font-size: 25px;
+   
+}
+.select-button{
+    width: 90px;
+}
+.btn-success{
+    margin-left: 40%;
+    background-color: rgb(194, 214, 16);
+    border: rgb(194, 214, 16);
+    color: cornsilk;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.modal-body h3{
+    color: crimson;
+    font-weight: bolder;
+    font-size: 30px;
+}

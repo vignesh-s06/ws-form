@@ -1,0 +1,294 @@
+<div class="container card mt-5">
+    <h1 class="text-center" style="color: green;">Reactive form</h1>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div class="mb-3 mt-3">
+          <label for="First name" class="form-label">First name:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="fn"
+            placeholder="Enter Firstname"
+            formControlName="fn"
+            name="fn"
+          />
+          <div
+            class="text text-danger"
+            *ngIf="loginForm.get('fn')?.invalid && loginForm.get('fn')?.touched"
+          >
+            <span *ngIf="loginForm.get('fn')?.errors?.['required']">
+              First name is reuired
+            </span>
+            <span *ngIf="loginForm.get('fn')?.errors?.['minlength']">
+              Must be of 5 characters
+            </span>
+          </div>
+          <span class="text success" *ngIf="loginForm.get('fn')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+        <div class="mb-3 mt-3">
+          <label for="Last name" class="form-label">Last name:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="ln"
+            placeholder="Enter Lastname"
+            formControlName="ln"
+            name="ln"
+          />
+          <div
+            class="text text-danger"
+            *ngIf="loginForm.get('ln')?.invalid && loginForm.get('ln')?.touched"
+          >
+            <span *ngIf="loginForm.get('ln')?.errors?.['required']">
+              First name is reuired
+            </span>
+            <span *ngIf="loginForm.get('ln')?.errors?.['minlength']">
+              Must be of 5 characters
+            </span>
+          </div>
+          <span class="text success" *ngIf="loginForm.get('ln')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Enter email"
+            formControlName="email"
+            name="email"
+          />
+          <span
+            class="text text-danger"
+            *ngIf="
+              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            "
+            >Email Id is required
+          </span>
+          <span class="text success" *ngIf="loginForm.get('email')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+        <div class="d-flex">
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              [(ngModel)]="name"
+              [type]="hideShow ? 'text' : 'password'"
+              class="form-control w-75"
+              id="pwd"
+              placeholder="Enter password"
+              formControlName="pswd"
+              name="pswd"
+            />
+          </div>
+
+          <div
+            class="text text-danger"
+            *ngIf="
+              loginForm.get('pswd')?.invalid && loginForm.get('pswd')?.touched
+            "
+          >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('pswd')?.errors?.['required']
+          "
+              >password is required</span
+            >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('pswd')?.errors?.['minlength']
+          "
+              >Field MinLength is 8</span
+            >
+          </div>
+          <span class="text success" *ngIf="loginForm.get('password')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+          <div class="size">
+            <i
+              class="fa"
+              [ngClass]="{ 'fa-eye-slash': !hideShow, 'fa-eye': hideShow }"
+              (click)="getPro()"
+            ></i>
+          </div>
+        </div>
+        <div class="mb-3 m-1">
+          <label for="phone" class="form-label">Phone:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="Enter phone no"
+            formControlName="phone"
+            name="phone"
+          />
+          <div
+            class="text text-danger"
+            *ngIf="
+              loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched
+            "
+          >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('phone')?.errors?.['required']
+        "
+              >phone no is required</span
+            >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('phone')?.errors?.['minlength']
+        "
+              >Number should be 10 characters</span
+            >
+          </div>
+          <span class="text success" *ngIf="loginForm.get('state')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+
+        <div class="d-flex">
+          <div class="mb-3 m-1">
+            <label for="pwd" class="form-label">City:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              class="form-control align-1"
+              id="city"
+              placeholder="Enter city"
+              formControlName="city"
+              name="city"
+            />
+            <div
+              class="text text-danger"
+              *ngIf="
+                loginForm.get('city')?.invalid && loginForm.get('city')?.touched
+              "
+            >
+              city is required
+            </div>
+            <span class="text success" *ngIf="loginForm.get('city')?.valid"
+              ><i class="fa fa-check text-success"></i
+            ></span>
+          </div>
+
+          <div class="mb-3 m-1">
+            <label for="state" class="form-label">State:</label>
+            <span class="text text-danger star-size">*</span>
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              placeholder="Enter state"
+              formControlName="state"
+              name="state"
+            />
+            <div
+              class="text text-danger"
+              *ngIf="
+                loginForm.get('pswd')?.invalid && loginForm.get('pswd')?.touched
+              "
+            >
+              State is required
+            </div>
+            <span class="text success" *ngIf="loginForm.get('state')?.valid"
+              ><i class="fa fa-check text-success"></i
+            ></span>
+          </div>
+        </div>
+
+        <div class="mb-3 m-1">
+          <label for="country" class="form-label">Country:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            placeholder="Enter country name"
+            formControlName="country"
+            name="country"
+          />
+          <div
+            class="text text-danger"
+            *ngIf="
+              loginForm.get('phone')?.invalid &&
+              loginForm.get('country')?.touched
+            "
+          >
+            Country is required
+          </div>
+          <span class="text success" *ngIf="loginForm.get('country')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+
+        <div class="mb-3 m-1">
+          <label for="zipcode" class="form-label">Zip code:</label>
+          <span class="text text-danger star-size">*</span>
+          <input
+            type="text"
+            class="form-control"
+            id="zipcode"
+            placeholder="Enter zipcode"
+            formControlName="zipcode"
+            name="zipcode"
+          />
+          <div
+            class="text text-danger"
+            *ngIf="
+              loginForm.get('zipcode')?.invalid &&
+              loginForm.get('zipcode')?.touched
+            "
+          >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('zipcode')?.errors?.['required']
+        "
+              >zipcode is required</span
+            >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('zipcode')?.errors?.['minlength']
+        "
+              >zipcode 6 characters</span
+            >
+            <span
+              class="text text-danger"
+              *ngIf="loginForm.get('zipcode')?.errors?.['maxlength']
+        "
+              >zipcode 6 characters</span
+            >
+          </div>
+          <span class="text success" *ngIf="loginForm.get('zipcode')?.valid"
+            ><i class="fa fa-check text-success"></i
+          ></span>
+        </div>
+
+        <div class="form-group mt-3">
+            <div class="form-check">
+                <label class="form-check-label" for="invalidCheck"></label>
+              <input class="form-check-input form-conrol " type="checkbox" id="invalidCheck" formControlName="check" name="check">
+              
+                Agree to terms and conditions
+              <div class="text-danger" *ngIf="loginForm.get('check')?.touched && loginForm.get('check')?.invalid " > 
+                You must agree before submitting.
+              </div>
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-primary select">Sign Up</button>
+      </form>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
